@@ -1,0 +1,5 @@
+node_modules/
+session-delete-plugin.json
+*.bak*
+trash/
+.DS_Store
