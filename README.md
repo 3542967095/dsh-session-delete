@@ -107,14 +107,16 @@ DSH 原生只支持“归档”，不支持删除会话。这个插件补上了�
 
 插件有三种安装方式，任选一种。
 
+> **不要把插件放在 `S:\Deepseek Harness\` 里面。** 那是 Harness 安装目录，更新时会被整体替换；推荐放在 `S:\DSH-Plugins\session-delete`，它在安装目录之外，更新不会删除。
+
 > 本包同时声明了 `dsh.bundle.patch`（`cordis.patch.yml`）。如果你的 DSH 插件管理器支持从 GitHub 安装 bundle，可以直接选它；桌面版仍推荐下面的独立安装，因为独立安装不会把插件代码复制到 C: 盘 profile。
 
-### 方式 A：使用插件管理器（推荐）
+### 方式 A：使用插件管理器（可选）
 
-如果你的 `plugins` 目录里有统一的 `install-plugin.cmd`：
+如果你的插件根目录里有统一的 `install-plugin.cmd`：
 
 ```powershell
-cd "S:\Deepseek Harness\plugins"
+cd "S:\DSH-Plugins"
 .\install-plugin.cmd session-delete
 ```
 
@@ -127,12 +129,12 @@ cd "S:\Deepseek Harness\plugins"
 
 > 注意：安装器只建立 junction，不把插件代码复制到 C 盘。
 
-### 方式 B：独立安装
+### 方式 B：独立安装（推荐）
 
 1. 把仓库文件夹放到插件目录，例如：
 
    ```text
-   S:\Deepseek Harness\plugins\session-delete
+   S:\DSH-Plugins\session-delete
    ```
 
 2. 双击 `install.cmd`，或在 PowerShell 中运行：
@@ -154,7 +156,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 1. 在 profile 的 `node_modules` 里建立 junction：
 
    ```powershell
-   $plugin = "S:\Deepseek Harness\plugins\session-delete"
+   $plugin = "S:\DSH-Plugins\session-delete"
    $target = "$env:USERPROFILE\.dsh\profiles\desktop\node_modules\dsh-plugin-session-delete"
    New-Item -ItemType Junction -Path $target -Target $plugin
    ```

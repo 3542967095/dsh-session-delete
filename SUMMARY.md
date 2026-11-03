@@ -28,7 +28,7 @@
 
 ## 4. 插件化
 
-- 插件代码在 `S:\Deepseek Harness\plugins\session-delete`；
+- 插件代码在 `S:\DSH-Plugins\session-delete`（Harness 安装目录之外，更新不会清掉）；
 - C 盘只保留一个指向它的 junction 和 profile 配置块；
 - 删除对话不会影响插件、脚本或 S 盘文件。
 
